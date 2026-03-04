@@ -30,14 +30,9 @@ def get_user_todos(user_id):
 def main():
     """Program entry point."""
     if len(sys.argv) != 2:
-        print("Usage: {} <employee_id>".format(sys.argv[0]), file=sys.stderr)
         sys.exit(1)
 
-    try:
-        user_id = int(sys.argv[1])
-    except ValueError:
-        print("employee_id must be an integer", file=sys.stderr)
-        sys.exit(1)
+    user_id = sys.argv[1]
 
     user = get_user(user_id)
     todos = get_user_todos(user_id)
@@ -52,8 +47,9 @@ def main():
             len(todos)
         )
     )
+
     for task in completed_tasks:
-        print("\t{}".format(task.get("title")))
+        print("\t {}".format(task.get("title")))
 
 
 if __name__ == "__main__":
